@@ -12,18 +12,18 @@ import java.io.PrintWriter;
  */
 public class WB3EX10 extends HttpServlet {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 4L;
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String name = request.getParameter("Name");
         String phoneNumber = request.getParameter("Phone");
         String mail = request.getParameter("Mail");
-        String error = null;
+        String error = "";
 
-        if (name == null) {
+        if (name == "") {
             error = "Field name is empty!";
-        } else if (phoneNumber == null && mail == null) {
+        } else if (phoneNumber == "" && mail == "") {
             error = "Fields: phoneNumber or mail is empty" ;
         }
         PrintWriter out = null;
@@ -37,10 +37,10 @@ public class WB3EX10 extends HttpServlet {
             out.print(error + "</title></head><body><h1>" + error + "</h1>");
             out.println("<hr align=\"left\" width=\"410\" size=\"3\"color=\"Red\"/>");
         } else {
-            out.print("Your contact info</title></head><body><h1>Your contact info</h1>");
+            out.print("Your contact info</title></head><body><h1>You entered contact information</h1>");
             out.print("<h1>Name: " + name + "</h1>");
             out.println("<hr align=\"left\" width=\"200\" size=\"3\"color=\"Green\"/>");
-            out.print("<h1>Phone: " + phoneNumber + "</h1>");
+            out.print("<h1>PhoneNumber: " + phoneNumber + "</h1>");
             out.println("<hr align=\"left\" width=\"200\" size=\"3\"color=\"Green\"/>");
             out.print("<h1>Email: " + mail + "</h1>");
             out.println("<hr align=\"left\" width=\"200\" size=\"3\"color=\"Green\"/>");
