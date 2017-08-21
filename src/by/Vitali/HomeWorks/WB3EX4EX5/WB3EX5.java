@@ -17,7 +17,7 @@ public class WB3EX5 {
         try {
             Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();  // + "?user=root&password=1234&useSSL=false"
+            e.printStackTrace();
         }
         try (Connection connection = DriverManager.getConnection(dbURL, userName, password)) {
             String query = "INSERT INTO expenses VALUES (?, ?, ?, ?);";
@@ -27,9 +27,8 @@ public class WB3EX5 {
             pStatement.setInt(3, Integer.valueOf(args[2]));
             pStatement.setInt(4, Integer.valueOf(args[3]));
             pStatement.executeUpdate();
-            Statement statement = connection.createStatement();
             query = "SELECT * FROM expenses INNER JOIN receivers ON expenses.receiver = receivers.num ORDER BY expenses.num;";
-            ResultSet result = statement.executeQuery(query);
+            ResultSet result = pStatement.executeQuery(query);
             while (result.next()) {
                 System.out.println(result.getInt("expenses.num") + " " + result.getDate("expenses.paydate")
                         + " " + result.getString("receivers.name") + " " + result.getInt("value"));

@@ -19,7 +19,7 @@ import java.sql.*;
             try {
                 Class.forName("com.mysql.jdbc.Driver");
             } catch (ClassNotFoundException e) {
-                e.printStackTrace();  // + "?user=root&password=1234&useSSL=false"
+                e.printStackTrace();
             }
             try (Connection connection = DriverManager.getConnection(dbURL, userName, password)) {
                 Statement statement = connection.createStatement();
