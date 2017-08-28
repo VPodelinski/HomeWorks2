@@ -39,7 +39,8 @@ public class WB3EX15 extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ServletContext servletContext = getServletContext();
         RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher("/WEB-INF/classes/by/Vitali/HomeWorks/WB3EX15/resource/WB3EX15.jsp");
-
+                                                            //jsp файл находится в папке resource классом WB3EX15 но относительный путь в виде
+                                                            // /resource/WB3EX15.jsp файл не находит!!!
         StringBuilder stringBuilder = new StringBuilder();
         List<Expense> expenses = daoClass.getExpenses();
         for (Expense expense : expenses) {
